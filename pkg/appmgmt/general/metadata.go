@@ -78,7 +78,10 @@ func getAppMetadata(pod *v1.Pod, recovery bool) (interfaces.ApplicationMetadata,
 	if isStateAwareDisabled(pod) {
 		tags[siCommon.AppTagStateAwareDisable] = "true"
 	}
-
+	// vcore, memory and duration
+	tags[siCommon.CPU] = pod.Labels[siCommon.CPU]
+	tags[siCommon.Memory] = pod.Labels[siCommon.Memory]
+	tags["Duration"] = pod.Labels["Duration"]
 	// get the user from Pod Labels
 	user := utils.GetUserFromPod(pod)
 

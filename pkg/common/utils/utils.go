@@ -220,12 +220,10 @@ func MergeMaps(first, second map[string]string) map[string]string {
 func GetUserFromPod(pod *v1.Pod) string {
 	userLabelKey := conf.GetSchedulerConf().UserLabelKey
 	// User name to be defined in labels
-	for name, value := range pod.Labels {
-		if name == userLabelKey {
-			log.Logger().Info("Found user name from pod labels.",
-				zap.String("userLabel", userLabelKey), zap.String("user", value))
-			return value
-		}
+	if value, ok := pod.Labels["yunikorn.apache.org/username"]; ok {
+		log.Logger().Info("Found user name from pod labels.",
+			zap.String("userLabel", userLabelKey), zap.String("user", value))
+		return value
 	}
 	value := constants.DefaultUser
 
