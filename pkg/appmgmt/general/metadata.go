@@ -81,7 +81,7 @@ func getAppMetadata(pod *v1.Pod, recovery bool) (interfaces.ApplicationMetadata,
 	// vcore, memory and duration
 	tags[siCommon.CPU] = pod.Labels[siCommon.CPU]
 	tags[siCommon.Memory] = pod.Labels[siCommon.Memory]
-	tags["Duration"] = pod.Labels["Duration"]
+	tags[siCommon.Duration] = pod.Labels[siCommon.Duration]
 	// get the user from Pod Labels
 	user := utils.GetUserFromPod(pod)
 

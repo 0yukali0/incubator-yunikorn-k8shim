@@ -48,6 +48,8 @@ require (
 )
 
 replace (
+        github.com/apache/yunikorn-core => ../incubator-yunikorn-core
+        github.com/apache/yunikorn-scheduler-interface => ../incubator-yunikorn-scheduler-interface
 	k8s.io/api => k8s.io/api v0.20.11
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.20.11
 	k8s.io/apimachinery => k8s.io/apimachinery v0.20.11
